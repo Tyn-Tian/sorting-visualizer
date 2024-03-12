@@ -1,5 +1,8 @@
 <template>
-  <button class="generate-btn" @click="resetArr">Generate New Array</button>
+  <div class="container">
+    <button class="btn" @click="resetArr">Generate New Array</button>
+    <button class="btn" @click="mergeSortArr">MergeSort</button>
+  </div>
   <div class="array-container">
     <div class="array-bar" v-for="n in arr" :style="{ height: n + 'px' }"></div>
   </div>
@@ -8,6 +11,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import randomIntFromInterval from "@/composables/getRandomInt";
+import { mergeSort } from "@/composables/sortingAlgorithms";
 
 const arr = ref([]);
 
@@ -18,16 +22,25 @@ const resetArr = () => {
   }
 };
 
+const mergeSortArr = () => {
+  console.log("do merge sort");
+};
+
 onMounted(() => {
   resetArr();
 });
 </script>
 
 <style scoped>
-.generate-btn {
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
   width: fit-content;
   height: fit-content;
-  display: block;
 
   font-weight: 600;
   font-size: 18px;
@@ -37,12 +50,12 @@ onMounted(() => {
   border-radius: 4px;
   background-color: #42b883;
   padding: 15px 30px;
-  margin: 0 auto 35px;
+  margin-bottom: 35px;
 
   cursor: pointer;
 }
 
-.generate-btn:hover {
+.btn:hover {
   color: #42b883;
 
   background-color: #35495e;
