@@ -1,4 +1,6 @@
-<template></template>
+<template>
+  <SortingVisualizer />
+</template>
 
 <script>
 import SortingVisualizer from "./components/SortingVisualizer.vue";
