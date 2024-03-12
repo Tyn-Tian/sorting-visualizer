@@ -1,4 +1,5 @@
 <template>
+  <button class="generate-btn" @click="resetArr">Generate New Array</button>
   <div class="array-container">
     <div class="array-bar" v-for="n in arr" :style="{ height: n + 'px' }"></div>
   </div>
@@ -26,6 +27,30 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.generate-btn {
+  width: fit-content;
+  height: fit-content;
+  display: block;
+
+  font-weight: 600;
+  font-size: 18px;
+  color: #35495e;
+
+  border: none;
+  border-radius: 4px;
+  background-color: #42b883;
+  padding: 15px 30px;
+  margin: 0 auto 35px;
+
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  color: #42b883;
+
+  background-color: #35495e;
+}
+
 .array-container {
   width: 100%;
   display: flex;
