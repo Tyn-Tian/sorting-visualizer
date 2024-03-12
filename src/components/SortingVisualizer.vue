@@ -7,6 +7,7 @@
 
 <script setup>
 import { onMounted, ref } from "vue";
+import randomIntFromInterval from "@/composables/getRandomInt";
 
 const arr = ref([]);
 
@@ -15,10 +16,6 @@ const resetArr = () => {
   for (let i = 0; i < 100; i++) {
     arr.value.push(randomIntFromInterval(5, 550));
   }
-};
-
-const randomIntFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 onMounted(() => {
