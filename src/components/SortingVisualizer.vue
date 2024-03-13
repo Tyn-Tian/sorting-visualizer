@@ -22,9 +22,30 @@ const resetArr = () => {
   }
 };
 
-const mergeSortArr = () => {
-  console.log("do merge sort");
-};
+function mergeSortArr() {
+  const newArray = [...arr.value];
+  const animations = mergeSort(newArray);
+  for (let i = 0; i < animations.length; i++) {
+    const arrayBars = document.getElementsByClassName("array-bar");
+    const isColorChange = i % 3 !== 2;
+    if (isColorChange) {
+      const [barOneIdx, barTwoIdx] = animations[i];
+      const barOneStyle = arrayBars[barOneIdx].style;
+      const barTwoStyle = arrayBars[barTwoIdx].style;
+      const color = i % 3 === 0 ? "red" : "#42b883";
+      setTimeout(() => {
+        barOneStyle.backgroundColor = color;
+        barTwoStyle.backgroundColor = color;
+      }, i * 3);
+    } else {
+      setTimeout(() => {
+        const [barOneIdx, newHeight] = animations[i];
+        const barOneStyle = arrayBars[barOneIdx].style;
+        barOneStyle.height = `${newHeight}px`;
+      }, i * 3);
+    }
+  }
+}
 
 onMounted(() => {
   resetArr();
