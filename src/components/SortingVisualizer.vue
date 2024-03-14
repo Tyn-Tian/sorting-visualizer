@@ -1,29 +1,24 @@
 <template>
   <div class="container">
-    <button class="btn" @click="resetArr">Generate New Array</button>
+    <button class="btn" @click="resetArray">Generate New Array</button>
     <button class="btn" @click="mergeSortArr">MergeSort</button>
   </div>
   <div class="array-container">
-    <div class="array-bar" v-for="n in arr" :style="{ height: n + 'px' }"></div>
+    <div
+      class="array-bar"
+      v-for="n in array"
+      :style="{ height: n + 'px' }"
+    ></div>
   </div>
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
-import randomIntFromInterval from "@/composables/getRandomInt";
-import { mergeSort } from "@/composables/sortingAlgorithms";
+import { getSortingAlgorithms } from "@/composables/sortingAlgorithms";
 
-const arr = ref([]);
-
-const resetArr = () => {
-  arr.value = [];
-  for (let i = 0; i < 100; i++) {
-    arr.value.push(randomIntFromInterval(5, 550));
-  }
-};
+const { array, resetArray, mergeSort } = getSortingAlgorithms();
 
 function mergeSortArr() {
-  const newArray = [...arr.value];
+  const newArray = [...array.value];
   const animations = mergeSort(newArray);
   for (let i = 0; i < animations.length; i++) {
     const arrayBars = document.getElementsByClassName("array-bar");
@@ -46,10 +41,6 @@ function mergeSortArr() {
     }
   }
 }
-
-onMounted(() => {
-  resetArr();
-});
 </script>
 
 <style scoped>
