@@ -17,7 +17,7 @@ import { getSortingAlgorithms } from "@/composables/sortingAlgorithms";
 
 const { array, resetArray, mergeSort } = getSortingAlgorithms();
 
-function mergeSortArr() {
+const mergeSortArr = () => {
   const newArray = [...array.value];
   const animations = mergeSort(newArray);
   for (let i = 0; i < animations.length; i++) {
@@ -40,7 +40,7 @@ function mergeSortArr() {
       }, i * 3);
     }
   }
-}
+};
 </script>
 
 <style scoped>
