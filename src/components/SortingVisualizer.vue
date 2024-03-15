@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <button class="btn" @click="resetArray">Generate New Array</button>
-    <button class="btn" @click="mergeSortArr">MergeSort</button>
+    <button class="btn" @click="mergeSortArr">Merge Sort</button>
+    <button class="btn" @click="bubbleSortArr">Bubble Sort</button>
   </div>
   <div class="array-container">
     <div
@@ -15,7 +16,7 @@
 <script setup>
 import { getSortingAlgorithms } from "@/composables/sortingAlgorithms";
 
-const { array, resetArray, mergeSort } = getSortingAlgorithms();
+const { array, resetArray, mergeSort, bubbleSort } = getSortingAlgorithms();
 
 const mergeSortArr = () => {
   const newArray = [...array.value];
@@ -37,6 +38,48 @@ const mergeSortArr = () => {
         const [barOneIdx, newHeight] = animations[i];
         const barOneStyle = arrayBars[barOneIdx].style;
         barOneStyle.height = `${newHeight}px`;
+      }, i * 3);
+    }
+  }
+};
+
+const bubbleSortArr = () => {
+  const newArray = [...array.value];
+  const animations = bubbleSort(newArray);
+
+  for (let i = 0; i < animations.length; i++) {
+    const arrayBars = document.getElementsByClassName("array-bar");
+
+    const [barOneIdx, barTwoIdx] = animations[i];
+    const barOneStyle = arrayBars[barOneIdx].style;
+    const barTwoStyle = arrayBars[barTwoIdx].style;
+
+    if (barOneIdx < barTwoIdx) {
+      setTimeout(() => {
+        barOneStyle.backgroundColor = "red";
+        barTwoStyle.backgroundColor = "red";
+      }, i * 3);
+
+      setTimeout(() => {
+        barOneStyle.backgroundColor = "#42b883";
+        barTwoStyle.backgroundColor = "#42b883";
+      }, i * 3);
+    } else {
+      setTimeout(() => {
+        barOneStyle.backgroundColor = "red";
+        barTwoStyle.backgroundColor = "red";
+      }, i * 3);
+
+      setTimeout(() => {
+        [barOneStyle.height, barTwoStyle.height] = [
+          barTwoStyle.height,
+          barOneStyle.height,
+        ];
+      }, i * 3);
+
+      setTimeout(() => {
+        barOneStyle.backgroundColor = "#42b883";
+        barTwoStyle.backgroundColor = "#42b883";
       }, i * 3);
     }
   }
