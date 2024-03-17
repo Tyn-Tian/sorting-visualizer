@@ -98,6 +98,7 @@ export function getSortingAlgorithms() {
     }
   };
 
+  // Bubble Sort
   const bubbleSort = (array) => {
     const animations = [];
     let isSwapped = false;
@@ -115,9 +116,28 @@ export function getSortingAlgorithms() {
       }
     }
 
-    console.log(animations);
     return animations;
   };
 
-  return { array, resetArray, mergeSort, bubbleSort };
+  // Selection Sort
+  const selectionSort = (array) => {
+    let minIdx;
+
+    for (let i = 0; i < array.length; i++) {
+      minIdx = i;
+
+      for (let j = i + 1; j < array.length; j++) {
+        if (array[j] < array[minIdx]) {
+          minIdx = j;
+        }
+      }
+
+      [array[minIdx], array[i]] = [array[i], array[minIdx]];
+    }
+
+    console.log(array);
+    return array;
+  };
+
+  return { array, resetArray, mergeSort, bubbleSort, selectionSort };
 }
