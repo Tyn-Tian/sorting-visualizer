@@ -3,6 +3,7 @@
     <button class="btn" @click="resetArray">Generate New Array</button>
     <button class="btn" @click="mergeSortArr">Merge Sort</button>
     <button class="btn" @click="bubbleSortArr">Bubble Sort</button>
+    <button class="btn" @click="selectionSortArr">Selection Sort</button>
   </div>
   <div class="array-container">
     <div
@@ -16,7 +17,8 @@
 <script setup>
 import { getSortingAlgorithms } from "@/composables/sortingAlgorithms";
 
-const { array, resetArray, mergeSort, bubbleSort } = getSortingAlgorithms();
+const { array, resetArray, mergeSort, bubbleSort, selectionSort } =
+  getSortingAlgorithms();
 
 const mergeSortArr = () => {
   const newArray = [...array.value];
@@ -83,6 +85,11 @@ const bubbleSortArr = () => {
       }, i * 3);
     }
   }
+};
+
+const selectionSortArr = () => {
+  const newArray = [...array.value];
+  selectionSort(newArray);
 };
 </script>
 
