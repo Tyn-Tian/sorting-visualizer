@@ -3,7 +3,6 @@
     <button class="btn" @click="resetArray">Generate New Array</button>
     <button class="btn" @click="mergeSortArr">Merge Sort</button>
     <button class="btn" @click="bubbleSortArr">Bubble Sort</button>
-    <button class="btn" @click="selectionSortArr">Selection Sort</button>
   </div>
   <div class="array-container">
     <div
@@ -20,6 +19,8 @@ import { getSortingAlgorithms } from "@/composables/sortingAlgorithms";
 const { array, resetArray, mergeSort, bubbleSort, selectionSort } =
   getSortingAlgorithms();
 
+const speedTime = 3;
+
 const mergeSortArr = () => {
   const newArray = [...array.value];
   const animations = mergeSort(newArray);
@@ -34,13 +35,13 @@ const mergeSortArr = () => {
       setTimeout(() => {
         barOneStyle.backgroundColor = color;
         barTwoStyle.backgroundColor = color;
-      }, i * 3);
+      }, i * speedTime);
     } else {
       setTimeout(() => {
         const [barOneIdx, newHeight] = animations[i];
         const barOneStyle = arrayBars[barOneIdx].style;
         barOneStyle.height = `${newHeight}px`;
-      }, i * 3);
+      }, i * speedTime);
     }
   }
 };
@@ -56,40 +57,24 @@ const bubbleSortArr = () => {
     const barOneStyle = arrayBars[barOneIdx].style;
     const barTwoStyle = arrayBars[barTwoIdx].style;
 
-    if (barOneIdx < barTwoIdx) {
-      setTimeout(() => {
-        barOneStyle.backgroundColor = "red";
-        barTwoStyle.backgroundColor = "red";
-      }, i * 3);
+    setTimeout(() => {
+      barOneStyle.backgroundColor = "red";
+      barTwoStyle.backgroundColor = "red";
+    }, i * speedTime);
 
-      setTimeout(() => {
-        barOneStyle.backgroundColor = "#42b883";
-        barTwoStyle.backgroundColor = "#42b883";
-      }, i * 3);
-    } else {
-      setTimeout(() => {
-        barOneStyle.backgroundColor = "red";
-        barTwoStyle.backgroundColor = "red";
-      }, i * 3);
+    setTimeout(() => {
+      if (barOneIdx > barTwoIdx) {
+        const tempHeight = barOneStyle.height;
+        barOneStyle.height = barTwoStyle.height;
+        barTwoStyle.height = tempHeight;
+      }
+    }, i * speedTime);
 
-      setTimeout(() => {
-        [barOneStyle.height, barTwoStyle.height] = [
-          barTwoStyle.height,
-          barOneStyle.height,
-        ];
-      }, i * 3);
-
-      setTimeout(() => {
-        barOneStyle.backgroundColor = "#42b883";
-        barTwoStyle.backgroundColor = "#42b883";
-      }, i * 3);
-    }
+    setTimeout(() => {
+      barOneStyle.backgroundColor = "#42b883";
+      barTwoStyle.backgroundColor = "#42b883";
+    }, i * speedTime + speedTime / 2);
   }
-};
-
-const selectionSortArr = () => {
-  const newArray = [...array.value];
-  selectionSort(newArray);
 };
 </script>
 
