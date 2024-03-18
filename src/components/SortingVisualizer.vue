@@ -16,8 +16,7 @@
 <script setup>
 import { getSortingAlgorithms } from "@/composables/sortingAlgorithms";
 
-const { array, resetArray, mergeSort, bubbleSort, selectionSort } =
-  getSortingAlgorithms();
+const { array, resetArray, mergeSort, bubbleSort } = getSortingAlgorithms();
 
 const speedTime = 3;
 
