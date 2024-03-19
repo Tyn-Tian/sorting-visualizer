@@ -111,6 +111,7 @@ const bubbleSortArr = () => {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: end;
 }
 
 .array-bar {
