@@ -87,23 +87,19 @@ const bubbleSortArr = () => {
 .btn {
   width: fit-content;
   height: fit-content;
-
   font-weight: 600;
   font-size: 18px;
   color: #35495e;
-
   border: none;
   border-radius: 4px;
   background-color: #42b883;
   padding: 15px 30px;
   margin-bottom: 35px;
-
   cursor: pointer;
 }
 
 .btn:hover {
   color: #42b883;
-
   background-color: #35495e;
 }
 
@@ -117,7 +113,6 @@ const bubbleSortArr = () => {
 .array-bar {
   width: 10px;
   display: inline-block;
-
   background-color: #42b883;
   margin: 0 1px;
 }
